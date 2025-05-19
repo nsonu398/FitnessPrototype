@@ -15,6 +15,10 @@ import {
   useColorScheme,
   View,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Home, BarChart, Plus, Calendar, User } from 'lucide-react-native';
+import AuthScreen from './src/screens/AuthScreen';
 
 import {
   Colors,
@@ -23,6 +27,12 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+
+import DashboardScreen from './src/screens/DashboardScreen';
+import HabitDetailScreen from './src/screens/HabitDetailScreen';
+import AddHabitScreen from './src/screens/AddHabitScreen';
+import StreakViewScreen from './src/screens/StreakViewScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -54,58 +64,43 @@ function Section({children, title}: SectionProps): React.JSX.Element {
   );
 }
 
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const Tab = createBottomTabNavigator();
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+const TabNavigator = () => (
+  <Tab.Navigator
+    screenOptions={({ route }) => ({
+      tabBarIcon: ({ color }) => {
+        if (route.name === 'Home') return <Home color={color} size={24} />;
+        if (route.name === 'Stats') return <BarChart color={color} size={24} />;
+        if (route.name === 'Add') return <Plus color={color} size={28} />;
+        if (route.name === 'Calendar') return <Calendar color={color} size={24} />;
+        if (route.name === 'Profile') return <User color={color} size={24} />;
+        return null;
+      },
+      tabBarActiveTintColor: '#6366f1',
+      tabBarInactiveTintColor: 'gray',
+      headerShown: false,
+    })}
+  >
+    <Tab.Screen name="Home" component={DashboardScreen} />
+    <Tab.Screen name="Stats" component={StreakViewScreen} />
+    <Tab.Screen name="Add" component={AddHabitScreen} />
+    <Tab.Screen name="Calendar" component={HabitDetailScreen} />
+    <Tab.Screen name="Profile" component={ProfileScreen} />
+  </Tab.Navigator>
+);
 
-  /*
-   * To keep the template simple and small we're adding padding to prevent view
-   * from rendering under the System UI.
-   * For bigger apps the recommendation is to use `react-native-safe-area-context`:
-   * https://github.com/AppAndFlow/react-native-safe-area-context
-   *
-   * You can read more about it here:
-   * https://github.com/react-native-community/discussions-and-proposals/discussions/827
-   */
-  const safePadding = '5%';
+export default function App() {
+  const [authenticated, setAuthenticated] = React.useState(false);
 
   return (
-    <View style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        style={backgroundStyle}>
-        <View style={{paddingRight: safePadding}}>
-          <Header/>
-        </View>
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-            paddingHorizontal: safePadding,
-            paddingBottom: safePadding,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </View>
+    <NavigationContainer>
+      {!authenticated ? (
+        <AuthScreen onAuthSuccess={() => setAuthenticated(true)} />
+      ) : (
+        <TabNavigator />
+      )}
+    </NavigationContainer>
   );
 }
 
@@ -126,6 +121,14 @@ const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
+  centered: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#f9fafb',
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
 });
-
-export default App;
