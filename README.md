@@ -95,10 +95,9 @@ To learn more about React Native, take a look at the following resources:
 - [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
 - [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
 - [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
-![Screenshot_20250519_215457](https://github.com/user-attachments/assets/b1a4b9f2-5fd9-4c7a-9913-8a71190659f6) ![Screenshot_20250519_215510](https://github.com/user-attachments/assets/89f02e53-655d-40dc-83f8-1ce48a72c0a9) ![Screenshot_20250519_215520](https://github.com/user-attachments/assets/fc533205-1104-4c24-b135-fdcb08f0e6a6) ![Screenshot_20250519_215536](https://github.com/user-attachments/assets/52bc275e-dbdd-4958-b05e-2dbfc3d1505a)
-![Screenshot_20250519_215544](https://github.com/user-attachments/assets/28db26e9-6d67-4530-9d12-983f27b814e5)
-![Screenshot_20250519_215554](https://github.com/user-attachments/assets/282ec256-6fcf-424a-87d0-164b9d97c658)
 
+Screenshots
+<table> <tr> <td><img src="https://github.com/user-attachments/assets/b1a4b9f2-5fd9-4c7a-9913-8a71190659f6" width="250" /></td> <td><img src="https://github.com/user-attachments/assets/89f02e53-655d-40dc-83f8-1ce48a72c0a9" width="250" /></td> <td><img src="https://github.com/user-attachments/assets/fc533205-1104-4c24-b135-fdcb08f0e6a6" width="250" /></td> </tr> <tr> <td><img src="https://github.com/user-attachments/assets/52bc275e-dbdd-4958-b05e-2dbfc3d1505a" width="250" /></td> <td><img src="https://github.com/user-attachments/assets/28db26e9-6d67-4530-9d12-983f27b814e5" width="250" /></td> <td><img src="https://github.com/user-attachments/assets/282ec256-6fcf-424a-87d0-164b9d97c658" width="250" /></td> </tr> </table> ```
 
 
 
